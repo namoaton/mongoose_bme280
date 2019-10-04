@@ -1,0 +1,29 @@
+author: Max Blashchuk
+description: Implements Mongoose ds28e17 rmt  SHT31 driver
+type: lib
+version: 1.0
+
+platforms: [ esp32 ]
+
+sources:
+  - src
+includes:
+  - include
+
+config_schema:
+
+tags:
+  - c
+  - cpp
+#  - docs:drivers:ds28e17 RMT
+
+libs:
+  - origin: https://github.com/namoaton/mongoose_ds28e17
+  - origin: https://github.com/mongoose-os-libs/i2c
+  - origin: https://github.com/mongoose-os-libs/spi
+
+build_vars:
+
+cdefs:
+
+manifest_version: 2017-09-17
