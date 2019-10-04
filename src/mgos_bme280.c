@@ -40,6 +40,9 @@ static int8_t user_ds_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data, 
         LOG(LL_INFO, ("Could not get DS28E17 global instance"));
         return -1;
     }
+    for (int k=0;k<8;k++){
+        LOG(LL_WARN, ("Found Bridge addr [%d] = %X",k,dt->deviceAddress[k]));
+    }
     uint8_t wr_data[1]={reg_addr};
     bool ok =mgos_ds28e17_rmt_write_read_data_stop(dt, mgos_ds28e17_rmt_get_addr(), dev_id,  1, wr_data ,  len, reg_data);
     LOG(LL_INFO, ("DS ok! %d",ok));
