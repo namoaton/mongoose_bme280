@@ -73,7 +73,7 @@ static int8_t user_ds_write(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data,
         LOG(LL_INFO, ("Could not get DS28E17 global instance"));
         return -1;
     }
-    uint8_t *wr_data[len+2];
+    uint8_t wr_data[len+2];
     memset(wr_data,0, sizeof(wr_data));
     wr_data[0] = len+1;
     wr_data[1] = reg_addr;
