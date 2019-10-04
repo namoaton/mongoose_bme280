@@ -41,7 +41,7 @@ static int8_t user_ds_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data, 
         return -1;
     }
     uint8_t wr_data[1]={reg_addr};
-    bool ok =mgos_ds28e17_rmt_write_read_data_stop(dt, dt->deviceAddress, dev_id,  1, wr_data ,  len, reg_data)
+    bool ok =mgos_ds28e17_rmt_write_read_data_stop(dt, mgos_ds28e17_rmt_get_addr(), dev_id,  1, wr_data ,  len, reg_data)
 //    bool ok = mgos_i2c_read_reg_n(i2c, dev_id, reg_addr, len, reg_data);
     return ok ? 0 : -2;
 }
@@ -78,7 +78,7 @@ static int8_t user_ds_write(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data,
     wr_data[0] = len+1;
     wr_data[1] = reg_addr;
     memcpy(&wr_data[2],reg_data, len);
-    bool ok = mgos_ds28e17_rmt_write_data_stop(dt,dt->deviceAddress,dev_id,  len+1 ,wr_data);
+    bool ok = mgos_ds28e17_rmt_write_data_stop(dt,mgos_ds28e17_rmt_get_addr(),dev_id,  len+1 ,wr_data);
 //    bool ok = mgos_i2c_write_reg_n(i2c, dev_id, reg_addr, len, reg_data);
     return ok ? 0 : -2;
 }
