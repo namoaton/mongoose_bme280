@@ -46,7 +46,7 @@ static int8_t user_ds_read(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data, 
     bool ok = mgos_ds28e17_rmt_write_data_stop(dt,ds_addr,dev_id<<1,  len ,wr_data);
     LOG(LL_INFO, ("Reg_addr = %X, len to read =  %d",reg_addr,len));
     LOG(LL_INFO, ("DS write ok = %d",ok));
-    ok = mgos_ds28e17_rmt_read_data_stop(dt, ds_addr, dev_id, len,  reg_data);
+    ok = mgos_ds28e17_rmt_read_data_stop(dt, ds_addr<<1|1, dev_id, len,  reg_data);
     LOG(LL_INFO, ("DS read ok! %d",ok));
     return ok ? 0 : -2;
 }
