@@ -434,7 +434,7 @@ int8_t bme280_set_regs(uint8_t *reg_addr, const uint8_t *reg_data, uint8_t len, 
         if (len != 0) {
             temp_buff[0] = reg_data[0];
             /* If interface selected is SPI */
-            if (dev->intf != BME280_I2C_INTF) {
+            if (dev->intf != BME280_I2C_INTF  && dev->intf != BME280_DS_INTF) {
                 for (reg_addr_cnt = 0; reg_addr_cnt < len; reg_addr_cnt++)
                     reg_addr[reg_addr_cnt] = reg_addr[reg_addr_cnt] & 0x7F;
             }
