@@ -400,7 +400,7 @@ int8_t bme280_get_regs(uint8_t reg_addr, uint8_t *reg_data, uint16_t len, const 
     /* Proceed if null check is fine */
     if (rslt == BME280_OK) {
         /* If interface selected is SPI */
-        if (dev->intf != BME280_I2C_INTF)
+        if (dev->intf != BME280_I2C_INTF && dev->intf != BME280_DS_INTF)
             reg_addr = reg_addr | 0x80;
         /* Read the data  */
         rslt = dev->read(dev->dev_id, reg_addr, reg_data, len);
