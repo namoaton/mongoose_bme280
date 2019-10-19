@@ -88,7 +88,7 @@ static int8_t user_ds_write(uint8_t dev_id, uint8_t reg_addr, uint8_t *reg_data,
     memcpy(&wr_data[1],reg_data, len);
     bool ok = mgos_ds28e17_rmt_write_data_stop(dt,mgos_ds28e17_rmt_get_addr(),dev_id<<1,  len ,wr_data);
 //    bool ok = mgos_i2c_write_reg_n(i2c, dev_id, reg_addr, len, reg_data);
-    LOG(LL_INFO, ("Reg_addr = %X, len to read =  %d",reg_addr,len));
+    LOG(LL_INFO, ("Reg_addr = %X, len to write =  %d",reg_addr,len));
     if (reg_addr ==0xf2 || reg_addr == 0xf4){
         LOG(LL_INFO, ("Reg_data = %X",reg_data[0]));
     }
